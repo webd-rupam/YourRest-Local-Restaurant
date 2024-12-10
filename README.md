@@ -19,6 +19,11 @@ Restaurant owners can:
 - 💳 Supports **Razorpay** for secure online payments.  
 - 💵 Offers a **Cash on Delivery (COD)** option for customers.  
 
+### 3. **Authentication & Database**  
+- 🔒 Uses **Firebase** for secure user authentication.  
+- 📂 Uses **Firestore Database** to store information such as user data, orders, and menu items.  
+- 🖼️ **Cloudinary** is integrated to store and manage images efficiently.    
+
 ### 4. **User Experience**  
 - 📱 Fully responsive design for desktop and mobile devices.  
 - ✨ Smooth animations powered by **GSAP** for an engaging user experience.  

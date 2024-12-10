@@ -356,18 +356,7 @@ export default function Admin() {
             >
               <FiTruck className="inline-block mr-2" /> Deliveries
             </button>
-            <button
-              className={`py-3 px-4 w-full text-left hover:bg-gray-700 ${selectedSection === "users" ? "bg-gray-700" : ""}`}
-              onClick={() => setSelectedSection("users")}
-            >
-              <FiUsers className="inline-block mr-2" /> User Management
-            </button>
-            <button
-              className={`py-3 px-4 w-full text-left hover:bg-gray-700 ${selectedSection === "settings" ? "bg-gray-700" : ""}`}
-              onClick={() => setSelectedSection("settings")}
-            >
-              <FiSettings className="inline-block mr-2" /> Settings
-            </button>
+           
           </nav>
         </aside>
 
