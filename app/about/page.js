@@ -54,7 +54,7 @@ const Page = () => {
               platform.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Whether you're dining in or enjoying our meals from the comfort of
+              Whether you are dining in or enjoying our meals from the comfort of
               your home, we promise an unforgettable culinary experience.
             </p>
           </div>
