@@ -10,6 +10,7 @@
 Restaurant owners can:  
 - 📝 **Manage Menus**: Add, edit, and delete menu items.  
 - 🚚 **Track Deliveries**: Monitor and manage customer orders in real time.  
+- 🔐 **Restricted Access**: Only selected users with an "admin" role can access the admin panel, ensuring secure and controlled management.
 
 ### 2. **Order Management**  
 - 📦 Customers can place orders for delivery or pickup.  
