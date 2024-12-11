@@ -7,7 +7,6 @@ import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const mobileMenuRef = useRef(null);
 
   useGSAP(() => {
@@ -18,25 +17,6 @@ const Navbar = () => {
       duration: 0.8,
     });
   });
-
-  // Use useEffect to set activeSection from localStorage on page load
-  useEffect(() => {
-    const storedActiveSection = localStorage.getItem("activeSection");
-    if (storedActiveSection && ["home", "menu", "contact", "about", "orders", "profile"].includes(storedActiveSection)) {
-      setActiveSection(storedActiveSection);
-    } else {
-      setActiveSection("home"); // Set to "Home" by default
-    }
-  }, []);
-  
-  
-
-  // Store the activeSection in localStorage whenever it changes
-  const handleClick = (section) => {
-    setActiveSection(section);
-    localStorage.setItem("activeSection", section); // Store activeSection in localStorage
-    setIsMenuOpen(false); // Close the mobile menu on link click
-  };
 
   useEffect(() => {
     if (isMenuOpen && mobileMenuRef.current) {
@@ -70,12 +50,7 @@ const Navbar = () => {
               <li key={item.key}>
                 <Link href={item.href}>
                   <p
-                    onClick={() => handleClick(item.key)}
-                    className={`cursor-pointer ${
-                      activeSection === item.key
-                        ? "text-orange-500"
-                        : "hover:text-orange-500"
-                    }`}
+                    className={`cursor-pointer hover:text-orange-500`}
                   >
                     {item.name}
                   </p>
@@ -87,20 +62,10 @@ const Navbar = () => {
           {/* Icons */}
           <div className="flex items-center space-x-6 text-gray-700">
             <Link href="/profile">
-              <FaUser
-                className={`hidden md:block cursor-pointer ${
-                  activeSection === "profile" ? "text-orange-500" : "hover:text-orange-500"
-                }`}
-                onClick={() => handleClick("profile")}
-              />
+              <FaUser className="hidden md:block cursor-pointer hover:text-orange-500" />
             </Link>
             <Link href="/orders">
-              <FaShoppingCart
-                className={`hidden md:block cursor-pointer ${
-                  activeSection === "orders" ? "text-orange-500" : "hover:text-orange-500"
-                }`}
-                onClick={() => handleClick("orders")}
-              />
+              <FaShoppingCart className="hidden md:block cursor-pointer hover:text-orange-500" />
             </Link>
           </div>
 
@@ -135,20 +100,12 @@ const Navbar = () => {
           <ul ref={mobileMenuRef} className="mobileMenu lg:hidden bg-white shadow-md py-4 space-y-4 text-center font-medium text-gray-700">
             {[
               { name: "Home", href: "/", key: "home" },
-              { name: "Menu", href: "/menu", key: "menu" },
               { name: "Contact", href: "/contact", key: "contact" },
               { name: "About us", href: "/about", key: "about" },
             ].map((item) => (
               <li key={item.key}>
                 <Link href={item.href}>
-                  <p
-                    onClick={() => handleClick(item.key)}
-                    className={`cursor-pointer ${
-                      activeSection === item.key
-                        ? "text-orange-500"
-                        : "hover:text-orange-500"
-                    }`}
-                  >
+                  <p className={`cursor-pointer hover:text-orange-500`}>
                     {item.name}
                   </p>
                 </Link>
@@ -169,23 +126,10 @@ const Navbar = () => {
           <Link
             key={item.key}
             href={item.href}
-            onClick={() => setActiveSection(item.key)} // Update activeSection
-            className={`text-center ${
-              activeSection === item.key ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
-            }`}
+            className="text-center text-gray-700 hover:text-orange-500"
           >
-            <item.icon
-              className={`text-xl mx-auto ${
-                activeSection === item.key ? "text-orange-500" : ""
-              }`}
-            />
-            <p
-              className={`text-xs ${
-                activeSection === item.key ? "text-orange-500" : ""
-              }`}
-            >
-              {item.name}
-            </p>
+            <item.icon className="text-xl mx-auto" />
+            <p className="text-xs">{item.name}</p>
           </Link>
         ))}
       </div>
